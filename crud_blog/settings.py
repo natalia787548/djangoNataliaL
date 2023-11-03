@@ -31,12 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crud_blog_web.apps.CrudBlogWebConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crud_blog',
+    'corsheaders',
+
+
 ]
 
 MIDDLEWARE = [
@@ -47,11 +52,26 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'corsheaders.middleware.CorsMiddleware',
 
+]
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:8080',  # for localhost frontend
+)
+ALLOWED_HOSTS = ["localhost",'127.0.0.1']
 ROOT_URLCONF = 'crud_blog.urls'
 from pathlib import Path
-
+CORS_ALLOW_HEADERS = [
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+]
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES = [
     {
@@ -76,11 +96,12 @@ WSGI_APPLICATION = 'crud_blog.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
+
 
 
 # Password validation

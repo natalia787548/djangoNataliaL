@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 class Pokoj(models.Model):
     numer_pokoju=models.IntegerField()
-    typ_pokoju=models.ForeignKey('Typ_pokoju')
+    typ_pokoju=models.IntegerField()
     class Meta:
         db_table= "Pokoj"
         verbose_name_plural = "Pokoj"
@@ -26,14 +26,14 @@ class Gosc_hotelowy(models.Model):
         verbose_name_plural = "Gosc_hotelowy"
 
 class Hotel(models.Model):
-    nazwa=models.CharField(max_lenght=200)
-    adres=models.CharField(max_lenght=200)
+    nazwa=models.CharField(max_length=200)
+    adres=models.CharField(max_length=200)
     class Meta:
         db_table="Hotel"
         verbose_name_plural="Hotel"
 
 class Typ_pokoju(models.Model):
-    nazwa_typu_pokoju=models.CharField(max_lenght=150)
+    nazwa_typu_pokoju=models.CharField(max_length=150)
     ilosc_osob=models.IntegerField()
     cena=models.IntegerField()
 

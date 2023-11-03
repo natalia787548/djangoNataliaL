@@ -22,4 +22,6 @@ import crud_blog_web.views
 urlpatterns = [
     path('', crud_blog_web.views.szablon,name='szablon'),
     path('admin/', admin.site.urls),
+
+    path('api', crud_blog_web.views.apitest),
 ]
